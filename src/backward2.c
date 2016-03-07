@@ -45,6 +45,7 @@
 
 int main(int argc, char** argv)
 {
-	backward("test.txt");
+	if(argc > 1)
+		backward(argv[1]);
 	return 0;
 }
