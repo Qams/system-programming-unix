@@ -69,9 +69,8 @@ static void print_type(struct stat *sb){
   case S_IFDIR:  printf("directory\n");               	break;
   case S_IFIFO:  printf("pipe\n");						break;
   case S_IFLNK:  printf("symbolic link\n");           	break;
-  case S_IFSOCK:  printf("socket\n");                 	break;
-
-  default:       printf("unknown?\n");                break;
+  case S_IFSOCK: printf("socket\n");                 	break;
+  default:       printf("unknown?\n");                	break;
   }
 }
 /* -------------------------------------------------------------------------------- */
