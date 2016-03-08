@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <time.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <libgen.h>
@@ -12,7 +13,7 @@
 #include <errno.h>
 #include <aio.h>
 #define KILO 1024
-#define BUFSIZE 8
+#define BUFSIZE 512
 /* -------------------------------------------------------------------------------- */
 
 static void print_type(struct stat *sb);
@@ -153,7 +154,7 @@ static void print_size(const struct stat *sb){
   printf("Preferred I/O block size: %ld bytes\n", (long) sb->st_blksize);
   while(1)
   {
-	if(sb->st_size > KILO*(i+1))
+	if(sb->st_size > pow(KILO, i+1))
 		i++;
 	else
 		break;
