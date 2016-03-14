@@ -216,6 +216,7 @@ static void print_content(char* name){
 		cb.aio_fildes = fd;
 		cb.aio_buf = buf1;
 		cb.aio_nbytes = sizeof(buf1);
+		cb.aio_offset = 0;
 		cb.aio_sigevent.sigev_notify = SIGEV_NONE;
 		int numBytes;
 		do{
