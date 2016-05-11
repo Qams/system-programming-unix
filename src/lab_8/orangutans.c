@@ -74,10 +74,10 @@ int main (int argc, char **argv){
 			sem_wait(semFive);
 			myP = *p;
 		    printf ("  Orangutan(%d) is on the rope.\n", i);
-			// time, when orangutan is on the line
+			// time, when orangutan is on the rope
 			sleep (2);
-			// 0 - orangutan crossed from left side of line to right
-			// 1 - orangutan crossed from right side of line to left
+			// 0 - orangutan crossed from left side of rope to right
+			// 1 - orangutan crossed from right side of rope to left
 			printf("Orangutan(%d) crossed - left[0] or right[1] side: %d\n" ,i, leftOrRight);
 			sem_post(semFive);
 			sem_getvalue(semFive, &flag);
