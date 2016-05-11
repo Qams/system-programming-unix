@@ -24,7 +24,7 @@ int main (int argc, char **argv){
 	srand(time(NULL));
     // shared memory
     shmkey = ftok ("/dev/null", 5);      
-    printf ("shmkey dla p = %d\n", shmkey);
+    printf ("shmkey for p = %d\n", shmkey);
     shmid = shmget (shmkey, sizeof (int), 0644 | IPC_CREAT);
     if (shmid < 0){                        
         perror ("shmget\n");
@@ -35,7 +35,7 @@ int main (int argc, char **argv){
     *p = 0; 
 	semFive = sem_open("tSem", O_CREAT | O_EXCL, 0644, valueFive);      
 	sem_unlink("tSem");
-    printf ("Semafory zainicjalizowane.\n\n");
+    printf ("Semaphores initialized.\n\n");
 
 	for (i = 0; i < n; i++){
         pid = fork ();
@@ -57,7 +57,7 @@ int main (int argc, char **argv){
                 break;
         }
 
-        printf ("\nParent: Wszystkie orangutany przeszly po linie.\n");
+        printf ("\nParent: All of orangutans crossed through the rope.\n");
 
         shmdt (p);
         shmctl (shmid, IPC_RMID, 0);
@@ -73,7 +73,7 @@ int main (int argc, char **argv){
 			}
 			sem_wait(semFive);
 			myP = *p;
-		    printf ("  Orangutan(%d) jest na linie.\n", i);
+		    printf ("  Orangutan(%d) is on the rope.\n", i);
 			// time, when orangutan is on the line
 			sleep (2);
 			// 0 - orangutan crossed from left side of line to right
